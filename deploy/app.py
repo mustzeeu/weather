@@ -86,7 +86,7 @@ def send_email(email, title, message, image_url):
     return response.text
 
 # Streamlit 앱 구성
-st.title("날씨 기반 아트와 이메일 알림")
+st.title("감성충만 날씨 기반 아트와 이메일 알림")
 
 city = st.text_input("날씨 정보를 가져올 도시를 입력하세요", "seoul")
 
