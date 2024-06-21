@@ -8,7 +8,6 @@ import uuid
 
 
 # OpenAI API 키 설정
-os.environ["OPENAI_API_KEY"] = 'sk-proj-68hafrnLpl2QHvy3bl6pT3BlbkFJTrQt6fe8C5B67T4UmOA0'
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 # OpenWeatherMap API 설정
