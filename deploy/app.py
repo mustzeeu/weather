@@ -51,7 +51,7 @@ def generate_message(city, temperature, description):
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=messages,
-        max_tokens=200,
+        max_tokens=300,
         temperature=0.7,
     )
     return response.choices[0].message.content.strip()
