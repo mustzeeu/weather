@@ -26,15 +26,19 @@ def get_weather(city):
     return response.json()
 
 def generate_image(prompt):
-    response = client.images.generate(
-        model="dall-e-3",
-        prompt=prompt,
-        size="1024x1024",
-        quality="hd",
-        n=1,
-    )
-    image_url = response.data[0].url
-    return image_url
+    try:
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=prompt,
+            size="1024x1024",
+            quality="hd",
+            n=1,
+        )
+        image_url = response.data[0].url
+        return image_url
+    except Exception as e:
+        print(f"Error generating image: {e}") 
+        return None
 
 def generate_message(city, temperature, description):
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
