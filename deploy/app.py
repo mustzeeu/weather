@@ -5,7 +5,7 @@ import os
 import json
 from openai import OpenAI
 import uuid
-
+import pytz
 
 # OpenAI API 키 설정
 os.environ["OPENAI_API_KEY"] = st.secrets['API_KEY']
@@ -41,7 +41,9 @@ def generate_image(prompt):
         return None
 
 def generate_message(city, temperature, description):
-    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    seoul_timezone = pytz.timezone('Asia/Seoul')
+    now = datetime.now(seoul_timezone).strftime('%Y-%m-%d %H:%M:%S')
+    
     messages = [
         {"role": "system", "content": "당신은 굉장히 친절한 직장인 입니다. 내일 출근도 해야하지만 친구를 위해서 애정어린 편지를 쓰는 상황이에요. 항상 한국어로 작성해주세요."},
         {"role": "user", "content": f"입력받은 도시에 대한 감성적인 하루를 시작하는 글귀를 한국어로 작성해주세요. 도시정보: {city}. 현재 날씨는 {description} 그리고 현재 온도는 다음과 같아요. {temperature}°C. 현재 시간은 {now}으로 관련해서 직장인들이 내일 혹은 지금을 열심히 준비할 수 있도록 혹은 살아갈 수 있는 긍정적인 메시지로 작성해줘요.."}
