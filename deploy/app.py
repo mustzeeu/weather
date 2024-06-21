@@ -8,6 +8,8 @@ import uuid
 
 
 # OpenAI API 키 설정
+os.environ["OPENAI_API_KEY"] = st.secrets['API_KEY']
+
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 # OpenWeatherMap API 설정
